@@ -15,5 +15,6 @@ Contents
 
 .. toctree::
 
+   0 简介
    usage
    api
