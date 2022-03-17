@@ -1,10 +1,7 @@
-Welcome to Lumache's documentation!
+欢迎来到SpaceOS Interface的文档!
 ===================================
 
-**Lumache** (/lu'make/) is a Python library for cooks and food lovers
-that creates recipes mixing random ingredients.
-It pulls data from the `Open Food Facts database <https://world.openfoodfacts.org/>`_
-and offers a *simple* and *intuitive* API.
+**SpaceOS Interface** (/lu'make/) 是自动驾驶系统SpaceOS的接口模块。
 
 Check out the :doc:`usage` section for further information, including
 how to :ref:`installation` the project.

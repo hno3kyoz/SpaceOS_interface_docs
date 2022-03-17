@@ -2,9 +2,9 @@
 
 # -- Project information
 
-project = 'Lumache'
-copyright = '2021, Graziella'
-author = 'Graziella'
+project = 'SpaceOS Interface'
+copyright = '2022, Space.top Inc.'
+author = 'Zhi.Zhao'
 
 release = '0.1'
 version = '0.1.0'
