@@ -6,35 +6,37 @@ HAVP(Home Automated Valet Parking assist)，即记忆泊车功能，是泊车辅
 
 此功能由五个子功能构成，分别是建图功能、记忆泊入、记忆泊出、反向召唤以及反向寻车功能。
 
-1. 2. 
-
 
 
 ## 状态接口
 
-| Key             | Value                                                        | 注释               |
-| --------------- | ------------------------------------------------------------ | ------------------ |
-| ShakehandResp   | 0x0:No_Response <br />0x2:Response                           | 握手反馈信号       |
-| AvmStsReq       | 0x0:Off <br />0x1:On                                         | AVM 请求开启 信号  |
-| FunctBtnSts     | 0x0:Set_Ash <br />0x1:HAVP_function_active <br />0x2:Highlight | 功能按键状态       |
-| Signal_Indnc    | 0x0:APA 0x1:AVP                                              | ==信号优先级判断== |
-| FunctWorkSts    | 0x0:Standby 0x1:Mapbuilding 0x2:Mapbuilt_complete 0x3:Cruise 0x4:Failure 0x5:Pause 0x6:Parking | 工作状态           |
-| InterfaceDisTyp | 0x0:None <br />0x1:Pre_HAVP <br />0x2:Mapbuilt <br />0x3:Cruise <br />0x5:Mapbuilt_complete <br />0x6:HAVP_completed <br />0x7:MapShowToStart | 界面显示类型       |
-| PopupDisp       | 详见弹窗提示                                                 | 提示弹窗           |
-| FunctTextDisp   | 详见文字提示                                                 | 文字显示           |
-| BtnEnaAck       | 0x0:No_Response 0x1:Response                                 | 开关点击反馈       |
-| FunctBtnDisp    | 0x0:None <br />0x1:Start_HAVP <br />0x2:Start_mapbuilt <br />0x3:Parking_in_weak_active <br />0x4:Mapbuilt_weak_active_signal <br />0x5:Continue_HAVP <br />0x6:Map_build_completed <br />0x7:Start_APA <br />0x8:Start_SVP <br />0x9:Continue_SVP | 按键显示           |
+| Key             | Value                                                        | 注释                                                         |      |
+| --------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ---- |
+| HAVP工作状态    | state                                                        | 0x0:Standby <br />0x1:Mapbuilding <br />0x2:Mapbuilt_complete <br />0x3:Cruise <br />0x4:Failure <br />0x5:Pause <br />0x6:Parking |      |
+| ShakehandResp   | 0x0:No_Response <br />0x2:Response                           | 握手反馈信号                                                 |      |
+| AvmStsReq       | 0x0:Off <br />0x1:On                                         | AVM 请求开启 信号                                            |      |
+| FunctBtnSts     | 0x0:Set_Ash <br />0x1:HAVP_function_active <br />0x2:Highlight | 功能按键状态                                                 |      |
+| Signal_Indnc    | 0x0:APA 0x1:AVP                                              | ==信号优先级判断==                                           |      |
+| InterfaceDisTyp | 0x0:None <br />0x1:Pre_HAVP <br />0x2:Mapbuilt <br />0x3:Cruise <br />0x5:Mapbuilt_complete <br />0x6:HAVP_completed <br />0x7:MapShowToStart | 界面显示类型                                                 |      |
+| PopupDisp       | 详见弹窗提示                                                 | 提示弹窗                                                     |      |
+| FunctTextDisp   | 详见文字提示                                                 | 文字显示                                                     |      |
+| BtnEnaAck       | 0x0:No_Response 0x1:Response                                 | 开关点击反馈                                                 |      |
 
+## 设置接口
 
+| 接口               | Key         | Value                         |
+| ------------------ | ----------- | ----------------------------- |
+| 启动/关闭 HAVP功能 | HAVP_enable | 0x0:enable <br />0x1: disable |
+|                    |             |                               |
 
 ## 控制接口：
 
-| Key          | value                                                        | 注释              |
-| ------------ | ------------------------------------------------------------ | ----------------- |
-| ShakehandReq | 0x0:No_Request <br />0x1: Request                            | APA与HUT 握手信号 |
-| AvmStsResp   | 0x0:Off <br />0x1:On                                         | 启动/关闭 AVM功能 |
-| SelectslotID | 0x0~0x1F                                                     | 选择泊入信号      |
-| BtnEnaReq    | 0x0:None <br />0x1:Mapbuilt_weak_active <br />0x2:HAVP_active_signal <br />0x3:Confrim_mapbuilt <br />0x4:Change_route <br />0x5:Confrim_start_parking <br />0x6:Parking_in_weak_active <br />0x7:Cancel <br />0x8:Continue_HAVP<br />0x9:Map_build_completed_click <br />0xA:HAVP_function_open <br />0xB:HAVP_function_closed <br />0xC:Weak_alert_function_open <br />0xD:HAVP_Weak_alert_function_closed <br />0xE:Learning_completed <br />0xF:Cancel_current_weak_active_button <br />0x10:SVP_function_open <br />0x11:SVP_function_closed <br />0x12:Start_HAVP_VR <br />0x13:Start_SVP <br />0x14:Start_SVP_VR <br />0x15:Try <br />0x16:Continue_Learn <br />0x17:Search_Slot_along_way <br />0x18:HAVP_Completed | 开关点击信号      |
+| 接口              | Key            | Value                                                        |
+| ----------------- | -------------- | ------------------------------------------------------------ |
+| 进入/退出 HAVP    | enter_HAVP     | 0x0:enter <br />0x1: cancel                                  |
+| 选择泊入车位      | select_slot_ID | 0x0~0x1F                                                     |
+| 开关点击信号      | BtnEnaReq      | 0x0:None <br />0x1:Mapbuilt_weak_active <br />0x2:HAVP_active_signal <br />0x3:Confrim_mapbuilt <br />0x4:Change_route <br />0x5:Confrim_start_parking <br />0x6:Parking_in_weak_active <br />0x7:Cancel <br />0x8:Continue_HAVP<br />0x9:Map_build_completed_click <br />0xA:HAVP_function_open <br />0xB:HAVP_function_closed <br />0xC:Weak_alert_function_open <br />0xD:HAVP_Weak_alert_function_closed <br />0xE:Learning_completed <br />0xF:Cancel_current_weak_active_button <br />0x10:SVP_function_open <br />0x11:SVP_function_closed <br />0x12:Start_HAVP_VR <br />0x13:Start_SVP <br />0x14:Start_SVP_VR <br />0x15:Try <br />0x16:Continue_Learn <br />0x17:Search_Slot_along_way <br />0x18:HAVP_Completed |
+| APA与HUT 握手信号 | ShakehandReq   | 0x0:No_Request<br />0x1: Request                             |
 
 ## 报警字段
 

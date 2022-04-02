@@ -4,7 +4,7 @@
 
 APA（Auto Parking Asist）自动泊车是生活中最常见的泊车辅助系统。泊车辅助系统在汽车低速巡航时，使用传感器感知周围环境，帮助驾驶员找到尺寸合适的空车位，并在驾驶员发送泊车指令后，将汽车泊入车位。
 
-## 状态接口
+
 
 | 接口              | key                                                          | value                                                        |
 | ----------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -13,6 +13,8 @@ APA（Auto Parking Asist）自动泊车是生活中最常见的泊车辅助系�
 | ==APA??==         | APA_MenuDispCtr lCmd                                         | 0x0:No_Disp_avm_menu <br />0x1:park_in_indicate_menu <br />0x2:park_in_select_slot_menu <br />0x3:park_in_mode_select_menu <br />0x4:park_in_process <br />0x5:remote_park_in_process <br />0x6:park_out_confirm_menu <br />0x7:park_out_process<br />0x8:park_in_indicate_menu_NoRPA <br />0x9:park_in_select_slot_menu_NoRPA <br />0xA:park_in_mode_select_menu_NoRPA <br />0xB:park_out _indicate_menu <br />0xC:User_Defined_Parking_Slot_Menu <br />0xD:park_in_RemoteSearchingSlot_menu <br />0xE:PAVP_screen_section_A 0xF:Reversed |
 | 显示提示信息      | APS_TextDisp                                                 | 详见《提示列表》...                                          |
 | ==？==            | HAP_SwtDispCtrl Cmd                                          | 0x0:no display <br />0x1:park out direction Select menu <br />0x2:continue park menu <br />0x3:Study finish button <br />0x4:continue RADS menu <br />0x5:continue FADS menu <br />0x6~0x7:Reserved |
+| ?                 | HAP_PrkgModCurrSts                                           | 0x1:Left parallel park in<br />0x2:Right parallel park in<br />0x3:Left vert park in<br />0x4:Right vert park in<br />0x5:Left Tshape park in<br />0x6:Right Tshape park in<br />0x7:Left parallel park out<br />0x8:Right parallel park out<br />0x9:Front vert park out<br />0xA:Rear vert park out<br />0xB:P2P Summon |
+| ?                 | APS_SlotDisp                                                 | 0x0:No parking slot<br />0x1:Left parallel parking slot<br />0x2:Left vertical parking slot<br />0x3:Left T-shape parking slot<br />0x4:Right parallel parking slot<br />0x5:Right vertical parking slot<br />0x6:Right T-shape parking slot<br />0x7:Reserved |
 | 泊车进度          | ProcBar                                                      | 0x0-0x64: 0~100% <br />0x65-0x7E: Reserved <br />0x7F: No Display |
 | 播放报警音        | sound                                                        | 0x0:Tone 0 - No Warning <br />0x1:Tone 1 - failed tone <br />0x2:Tone 2 - successful tone <br />0x3:Tone 3 - warning tone <br />0x4:Tone 4 - request tone 0x5~0x7:Reserved |
 | ==atparkgrage==   | 0：IDEL 1:地库内   2：地库外                                 |                                                              |
@@ -36,6 +38,7 @@ APA（Auto Parking Asist）自动泊车是生活中最常见的泊车辅助系�
 | 选择泊车模式             | PrkgCtrlModReq                                               | 0x0:No action <br />0x1:Parking in car <br />0x2:Remote parking <br />0x3:Remote searching slot |
 | 设置泊出方向             | SelPrkOutDirReq                                              | 0x0:No selection <br />0x1:Park out front/vertical head out <br />0x2:Park out rear/vertical tail out <br />0x3:Park out left/parallel left out <br />0x4:Park out right/parallel right out <br />0x5-0x7:Reserved |
 | 开始泊车                 | StartParkCmd                                                 | 0x0:No_Request <br />0x1:Request                             |
+| ?                        | ContnPrkgReq                                                 | 0x0 :no selection<br />0x1: select continue parking<br />0x2:cancle parking<br />0x3:invalid |
 | ==pathid==               |                                                              | 路径id                                                       |
 | ==mapid==                |                                                              | 地图id                                                       |
 | ==BtnEnaReq_modestatus== | 0x0:None <br />0x1:Mapbuilt_weak_active <br />0x2:HAVP_active_signal <br />0x3:Confrim_mapbuilt <br />0x4:Change_route <br />0x5:Confrim_start_parking <br />0x6:Parking_in_weak_active <br />0x7:Cancel <br />0x8:Continue_HAVP<br />0x9:Map_build_completed_click <br />0xA:HAVP_function_open <br />0xB:HAVP_function_closed <br />0xC:Weak_alert_function_open <br />0xD:HAVP_Weak_alert_function_closed <br />0xE:Learning_completed <br />0xF:Cancel_current_weak_active_button <br />0x10:SVP_function_open <br />0x11:SVP_function_closed <br />0x12:Start_HAVP_VR <br />0x13:Start_SVP <br />0x14:Start_SVP_VR <br />0x15:Try <br />0x16:Continue_Learn <br />0x17:Search_Slot_along_way <br />0x18:HAVP_Completed | 开关点击信号                                                 |

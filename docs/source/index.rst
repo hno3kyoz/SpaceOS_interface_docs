@@ -33,3 +33,9 @@ Contents
    10 流程
    10 流程_APA
    10 流程_HAVP
+
+.. toctree::
+   :maxdepth: 2
+   :caption: 推荐设计
+
+   101 推荐设计
